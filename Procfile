@@ -1,0 +1,1 @@
+web: gunicorn vagaki.wsgi --log-file -
