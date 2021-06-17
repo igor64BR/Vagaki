@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .forms import OfferForm, CandidateForm
+from django.contrib import messages
 
 
-def index(request):
+def index(request):  # Redirect to the index page
     if str(request.user) != 'AnonymousUser':  # Registered user
         user = str(request.user).title()
         if request.user.is_superuser:  # Administrator user
@@ -18,12 +20,28 @@ def index(request):
     return render(request=request, context=context, template_name='index.html')
 
 
-def job_offers(request):
+def job_offers(request):  # Redirect to the job offers table
     context = {
 
     }
     return render(request=request, context=context, template_name='job_offers.html')
 
 
-def admin_area(request):
-    pass
+def new_offer(request):  # Redirect to a form create a new offer
+    if str(request.method) == 'POST':
+        form = OfferForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()  # Bug in here
+            form = OfferForm()
+            messages.success(request=request, message='Oferta publicada com sucesso!')
+
+        else:
+            messages.error(request=request, message='Falha no envio')
+    else:
+        form = OfferForm
+
+    context = {
+        'form': form
+    }
+    return render(request=request, context=context, template_name='new_offer.html')
