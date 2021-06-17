@@ -1,0 +1,31 @@
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem Vindo</title>
+    {% bootstrap_css %}
+    <link href="{% static 'css/css.css' %}" rel="stylesheet"/>
+</head>
+<body class="dark">
+    <div class="container">
+        <div class="centerall">
+            <center><img src="{% static 'images/JobConvo_log.png' %}"></center>
+            <br><br>
+            <center><h1>Bem Vindo, {{ user }}!</h1></center>
+            <br>
+            <center>
+            {% if not admin %}
+            <a class="btn btn-primary" href="{% url 'job-offers' %}" role="button">Candidate-se Agora!</a>
+            <br><br>
+            {% elif admin %}
+                <a class="btn btn-secondary" href="{% url 'admin-area' %}" role="button">Crie uma Nova Vaga de Emprego</a>
+            {% endif %}
+            </center>
+
+        </div>
+    </div>
+    {% bootstrap_javascript %}
+</body>
+</html>

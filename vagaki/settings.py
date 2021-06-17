@@ -81,19 +81,18 @@ WSGI_APPLICATION = 'vagaki.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-"""
-DATABASES = {
+
+DATABASES = {  # Substituted by PostgreSQL bellow
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-Substituted by PostgreSQL bellow
-"""
-# Using PostgreSQL with Heroku
-DATABASES = {
-    'default': dj_database_url.config()
-}
+
+# # Using PostgreSQL with Heroku
+# DATABASES = {
+#     'default': dj_database_url.config()
+# }
 
 
 # Password validation
@@ -118,9 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
