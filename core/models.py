@@ -29,6 +29,10 @@ class Offer(Base):
     requirements = models.CharField('Requisitos', max_length=100)
     min_education = models.CharField('Escolaridade Mínima', max_length=2, choices=EDUCATION, blank=False, null=False)
 
+    # class Meta:
+    #     db_table = 'offer'
+
+
     def __str__(self):
         return self.name
 
@@ -54,6 +58,7 @@ class Candidate(Base):
     phone = models.IntegerField('Número de Telefone - Apenas Números')
     sal_claim = models.CharField('Pretensão Salarial', choices=SALARY_RANGES, max_length=2, blank=False, null=False)
     education = models.CharField('Última Escolaridade', choices=EDUCATION, max_length=2, blank=False, null=False)
+
 
     def __str__(self):
         return self.name

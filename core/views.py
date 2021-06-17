@@ -30,16 +30,14 @@ def job_offers(request):  # Redirect to the job offers table
 def new_offer(request):  # Redirect to a form create a new offer
     if str(request.method) == 'POST':
         form = OfferForm(request.POST, request.FILES)
-
         if form.is_valid():
-            form.save()  # Bug in here
+            form.save(commit=True)
             form = OfferForm()
             messages.success(request=request, message='Oferta publicada com sucesso!')
-
         else:
             messages.error(request=request, message='Falha no envio')
     else:
-        form = OfferForm
+        form = OfferForm()
 
     context = {
         'form': form

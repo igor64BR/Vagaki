@@ -5,6 +5,7 @@ from django import forms
 class OfferForm(forms.ModelForm):  # Form to register a new job offer
 
     class Meta:
+
         model = Offer
         fields = ['name', 'salary', 'requirements', 'min_education']
 
