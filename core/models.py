@@ -29,10 +29,6 @@ class Offer(Base):
     requirements = models.CharField('Requisitos', max_length=100)
     min_education = models.CharField('Escolaridade Mínima', max_length=2, choices=EDUCATION, blank=False, null=False)
 
-    # class Meta:
-    #     db_table = 'offer'
-
-
     def __str__(self):
         return self.name
 
