@@ -51,7 +51,7 @@ class Candidate(Base):
     name = models.CharField('Nome', max_length=100, blank=False, null=False)
     surname = models.CharField('Sobrenome', max_length=100, blank=False, null=False)
     email = models.EmailField('Email', max_length=100, blank=False, null=False)
-    phone = models.IntegerField('Número de Telefone - Apenas Números', max_length=11)
+    phone = models.IntegerField('Número de Telefone - Apenas Números')
     sal_claim = models.CharField('Pretensão Salarial', choices=SALARY_RANGES, max_length=2, blank=False, null=False)
     education = models.CharField('Última Escolaridade', choices=EDUCATION, max_length=2, blank=False, null=False)
 
