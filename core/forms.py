@@ -14,4 +14,4 @@ class CandidateForm(forms.ModelForm):  # Form to register a candidature
 
     class Meta:
         model = Candidate
-        fields = ['name', 'surname', 'email', 'phone', 'sal_claim', 'education']
+        fields = ['name', 'surname', 'email', 'phone', 'sal_claim', 'formation', 'education', 'application']

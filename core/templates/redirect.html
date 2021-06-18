@@ -1,12 +1,33 @@
+{% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>REDIRECT</title>
+    {% bootstrap_css %}
+    <link href="{% static 'css/css.css' %}" rel="stylesheet">
 </head>
-<body>
+<body class="dark">
+    <br>
     <div class="container">
-        <h1>Redirect para {{ offer }}</h1>
+        <h1>Descrição para {{ offer }}</h1>
+        <ul>
+            <li>Faixa salarial: {{ offer.salary }} </li>
+            <li>Requisitos: {{offer.requirements}}</li>
+            <li>Escolaridade Mínima: {{ offer.min_education }}</li>
+        </ul>
+        <h1><a href="{% url 'index' %}" class="btn btn-primary">Voltar à Página Inicial</a></h1>
+        <form method="post" autocomplete="off" action="{% url 'redirect' offer.id %}" class="form"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-light">Candidatar-se</button>
+            {% endbuttons %}
+        </form>
     </div>
+
+    {% bootstrap_javascript jquery='full' %}
 </body>
 </html>

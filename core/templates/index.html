@@ -21,6 +21,9 @@
             <br><br>
             {% elif admin %}
                 <a class="btn btn-secondary" href="{% url 'new_offer' %}" role="button">Crie uma Nova Vaga de Emprego</a>
+                <br><br>
+                <span><a class="btn btn-primary" href="{% url 'job-offers' %}" role="button">Ver Vagas</a></span>
+
             {% endif %}
             </center>
 

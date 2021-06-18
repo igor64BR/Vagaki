@@ -29,6 +29,8 @@ def job_offers(request):  # Redirect to the job offers table
 
 
 def new_offer(request):  # Redirect to a form create a new offer
+    if request.user.is_anonymous:
+        return render(request=request, template_name='index.html')
     if str(request.method) == 'POST':
         form = OfferForm(request.POST, request.FILES)
         if form.is_valid():
@@ -47,8 +49,27 @@ def new_offer(request):  # Redirect to a form create a new offer
 
 
 def offer_redirect(request, pk):
+    if str(request.method) == 'POST':
+        form = CandidateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(commit=True)
+            form = CandidateForm()
+            messages.success(request=request, message='Oferta publicada com sucesso!')
+        else:
+            messages.error(request=request, message='Falha no envio')
+    else:
+        form = CandidateForm()
+
     offer = get_object_or_404(Offer, id=pk)
     context = {
-        'offer': offer
+        'offer': offer,
+        'form': form
     }
     return render(request=request, template_name='redirect.html', context=context)
+
+
+def register(request):
+    context = {
+
+    }
+    return render(request=request, template_name='request.html', context=context)
