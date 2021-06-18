@@ -8,8 +8,33 @@
     {% bootstrap_css %}
     <link href="{% static 'css/css.css' %}" rel="stylesheet"/>
 </head>
-<body>
+<body class="dark">
     <div class="container">
+        <h1>Ofertas Disponíveis</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">OFERTA</th>
+                    <th scope="col">FAIXA SALARIAL</th>
+                    <th scope="col">REQUISITOS</th>
+                    <th scope="col">ESCOLARIDADE MÍNIMA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for offer in offers %}
+                <tr>
+                    <th scope="row">
+                        <a href="{% url 'redirect' offer.id %}" class="dark">
+                        {{ offer.name }}
+                       </a>
+                    </th>
+                    <th>{{ offer.salary }}</th>
+                    <th>{{ offer.requirements }}</th>
+                    <th>{{ offer.min_education }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     {% bootstrap_javascript %}
 </body>

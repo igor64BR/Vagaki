@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import OfferForm, CandidateForm
 from django.contrib import messages
+from .models import Offer
 
 
 def index(request):  # Redirect to the index page
@@ -22,7 +23,7 @@ def index(request):  # Redirect to the index page
 
 def job_offers(request):  # Redirect to the job offers table
     context = {
-
+        'offers': Offer.objects.all()
     }
     return render(request=request, context=context, template_name='job_offers.html')
 
@@ -43,3 +44,11 @@ def new_offer(request):  # Redirect to a form create a new offer
         'form': form
     }
     return render(request=request, context=context, template_name='new_offer.html')
+
+
+def offer_redirect(request, pk):
+    offer = get_object_or_404(Offer, id=pk)
+    context = {
+        'offer': offer
+    }
+    return render(request=request, template_name='redirect.html', context=context)
