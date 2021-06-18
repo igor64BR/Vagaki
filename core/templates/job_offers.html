@@ -25,9 +25,11 @@
                 {% for offer in offers %}
                 <tr>
                     <th scope="row">
-                        <a href="{% url 'redirect' offer.id %}" class="underline">
-                        {{ offer.name }}
-                        </a>
+                        {% if admin %}
+                            <a href="{% url 'redirect' offer.id %}" class="underline">{{ offer.name }}</a>
+                        {% else %}
+                            {{ offer.name }}
+                        {% endif %}
                     </th>
                     <th>{{ offer.salary }}</th>
                     <th>{{ offer.requirements }}</th>
@@ -37,6 +39,9 @@
             </tbody>
         </table>
         <footer>
+            {% if admin %}
+            <h1><a href="{% url 'new_offer' %}" class="btn btn-secondary">Criar Nova Oferta</a></h1>
+            {% endif %}
             <h1><a href="{% url 'index' %}" class="btn btn-primary">Voltar à Página Inicial</a></h1>
         </footer>
     </div>

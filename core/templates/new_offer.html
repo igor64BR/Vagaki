@@ -1,16 +1,18 @@
 {% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Criar Oferta de Emprego</title>
     {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
 </head>
-<body>
+<body class="dark">
+    <br><br><br><br>
     <div class="container">
-        <h1>Nova Oferta</h1>
-<!--    enctype: Upload de arquivos (imagens, pdf, docs etc)    -->
-        <form method="post" autocomplete="off" action="{% url 'new_offer' %}" class="form" enctype="multipart/form-data">
+        <br><h1>Nova Oferta</h1>
+        <form method="post" autocomplete="off" action="{% url 'new_offer' %}" class="form">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}

@@ -22,8 +22,13 @@ def index(request):  # Redirect to the index page
 
 
 def job_offers(request):  # Redirect to the job offers table
+    if request.user.is_superuser:
+        admin = True
+    else:
+        admin = False
     context = {
-        'offers': Offer.objects.all()
+        'offers': Offer.objects.all(),
+        'admin': admin
     }
     return render(request=request, context=context, template_name='job_offers.html')
 
