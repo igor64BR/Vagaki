@@ -42,14 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Extra django apps
     'bootstrap4',
-    # 'django-stdimage'  # Media files
     # Local apps
     'core',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',  # Whitenoise used to load the css files
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Whitenoise used to load the css files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
