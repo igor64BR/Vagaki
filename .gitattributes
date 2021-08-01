@@ -1,2 +1,3 @@
 * linguistic-ventored
 *.python linguistic-detectable=true
+*.html linguistic-detectable=true
